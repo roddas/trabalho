@@ -25,7 +25,7 @@ jobs:
         bundle install
         bundle exec rake test
   lint:
-    continue-on-error: true
+    
     runs-on:  ubuntu-latest
     steps:
       - uses: ruby/setup-ruby@v1
@@ -35,3 +35,4 @@ jobs:
       - run: bundle install
       - name: Rubocop
         run: rubocop -A
+      - continue-on-error: true
