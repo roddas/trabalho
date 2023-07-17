@@ -21,8 +21,10 @@ jobs:
       with:
         bundler-cache: true
     - name: Run the tests
-      run: chmod +x ./ci_test.sh && ./ci_test.sh
-      # run: ruby -I test test/test_helper.rb
+      run: |
+        docker compose up -d decidim_web postgres
+        bundle install
+        rake test
   lint:
     runs-on:  ubuntu-latest
     steps:
