@@ -28,6 +28,7 @@ jobs:
     
     runs-on:  ubuntu-latest
     steps:
+      - continue-on-error: true
       - uses: ruby/setup-ruby@v1
         with:
             ruby-version: 3.0.4
@@ -35,4 +36,4 @@ jobs:
       - run: bundle install
       - name: Rubocop
         run: rubocop -A
-      - continue-on-error: true
+      
