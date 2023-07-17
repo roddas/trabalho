@@ -1,0 +1,25 @@
+name: Decidim CI Workflow
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build the Decidim image
+      run: docker compose up --build -d
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: ruby/setup-ruby@v1
+      with:
+        bundler-cache: true
+    - name: Run the tests
+      run: chmod +x ./ci_test.sh && ./ci_test.sh
+      # run: ruby -I test test/test_helper.rb
