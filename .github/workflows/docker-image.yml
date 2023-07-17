@@ -23,3 +23,11 @@ jobs:
     - name: Run the tests
       run: chmod +x ./ci_test.sh && ./ci_test.sh
       # run: ruby -I test test/test_helper.rb
+  lint:
+    runs-on:  ubuntu-latest
+    steps:
+    - uses: ruby/setup-ruby@v1
+    - uses: actions/checkout@v3
+    - run: bundle install
+    - name: Rubocop
+      run: rubocop
