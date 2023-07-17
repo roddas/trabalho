@@ -22,7 +22,6 @@ jobs:
         bundler-cache: true
     - name: Run the tests
       run: |
-        docker compose up -d postgres
         bundle install
         bundle exec rake test
   lint:
