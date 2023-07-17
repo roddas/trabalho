@@ -22,9 +22,9 @@ jobs:
         bundler-cache: true
     - name: Run the tests
       run: |
-        docker compose up -d decidim_web postgres
+        docker compose up -d postgres
         bundle install
-        rake test
+        bundle exec rake test
   lint:
     runs-on:  ubuntu-latest
     steps:
